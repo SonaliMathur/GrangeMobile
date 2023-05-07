@@ -1,0 +1,105 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title *ngIf="!formChanged">Delete Student</ion-title>
+    <ion-title *ngIf="formChanged">Update Student</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button
+        defaultHref="tab2"
+        (click)="dismiss(false)"
+      ></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content (load)="alert('loaded')">
+  <ion-input
+    type="text"
+    [(ngModel)]="newStudent.studentID"
+    placeholder="Student ID"
+    disabled
+  ></ion-input>
+  <ion-input
+    type="text"
+    [(ngModel)]="newStudent.firstName"
+    placeholder="First Name"
+  ></ion-input>
+  <ion-input
+    type="text"
+    [(ngModel)]="newStudent.lastName"
+    placeholder="Last Name"
+  ></ion-input>
+  <ion-input
+    type="text"
+    [(ngModel)]="newStudent.moduleNo1"
+    placeholder="Module 1"
+  ></ion-input>
+  <ion-input
+    type="text"
+    [(ngModel)]="newStudent.moduleNo2"
+    placeholder="Module 2"
+  ></ion-input>
+  <ion-input
+    type="text"
+    [(ngModel)]="newStudent.courseID"
+    placeholder="Course ID"
+  ></ion-input>
+  <hr style="border-top: 0.7px solid gray" />
+  <br />
+  <ion-button
+    color="success"
+    (click)="updateStudent()"
+    expand="block"
+    class="update-button"
+  >
+    <ion-icon slot="start" name="create"></ion-icon>
+    Update Student
+  </ion-button>
+
+  <br />
+
+  <ion-button
+    color="danger"
+    (click)="deleteStudent(student)"
+    expand="block"
+    class="delete-button"
+  >
+    <ion-icon slot="start" name="trash"></ion-icon>
+    Delete Student
+  </ion-button>
+</ion-content>
+
+<!-- <ion-button
+color="success"
+(click)="updateStudent()"
+size="default"
+class="update-button"
+>
+<ion-icon slot="start" name="create"></ion-icon>
+Update Student
+</ion-button>
+
+
+<br />
+
+<ion-button
+color="danger"
+(click)="deleteStudent(student)"
+size="default"
+class="delete-button"
+>
+<ion-icon slot="start" name="trash"></ion-icon>
+Delete Student
+</ion-button> -->
+
+<!--   
+  <ion-button
+    (click)="deleteStudent(student)"
+    expand="block"
+    *ngIf="formChanged == false"
+    >Delete Student</ion-button
+  >
+  <ion-button
+    (click)="updateStudent()"
+    expand="block"
+    *ngIf="formChanged == true"
+    >Update Student</ion-button
+  > -->

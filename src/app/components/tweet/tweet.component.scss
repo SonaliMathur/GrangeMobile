@@ -1,0 +1,63 @@
+.tweet-info {
+    font-size: 90%;
+}
+
+.name {
+    font-weight: 600;
+}
+
+.handle {
+    padding-left: 4px;
+    color: var(--ion-color-medium);
+}
+
+.wrapper {
+    border-bottom: 1px solid var(--ion-color-light);
+}
+
+
+
+.highlight {
+    color: var(--ion-color-primary);
+}
+
+.preview-img {
+    border: 1px solid var(--ion-color-light);
+    border-radius: 10px;
+}
+
+ion-row.ion-justify-content-start {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  
+  ion-col {
+    display: inline-block;
+    vertical-align: middle;
+  }
+  
+  .tweetText {
+    font-size: 80%;
+    margin-bottom: 10px;
+    line-height: 1.3em;
+  }
+
+  ion-avatar {
+
+    padding: 2px;
+    width: 45px;
+    height: 45px;
+  }
+
+  ion-icon {
+    font-size: 0.9em;
+
+    vertical-align: middle;
+  }
+
+  ion-button {
+    padding: 0px;
+  }
+  

@@ -1,0 +1,94 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title slot="start">Students</ion-title>
+    <ion-buttons slot="end">
+      <ion-button id="present-alert" (click)="presentAlert()">
+        <ion-alert
+          trigger="present-alert"
+          header="Alert!"
+          [buttons]="alertButtons"
+          (didDismiss)="setResult($event)"
+        ></ion-alert>
+        <ion-icon slot="end" name="log-out-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Students</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Students</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-searchbar
+    placeholder="Search for Students"
+    [(ngModel)]="searchTerm"
+    showCancelButton="focus"
+    animated
+  ></ion-searchbar>
+  <ng-container *ngIf="newStudents">
+    <ion-list>
+      <ion-item
+        button
+        *ngFor="let student of newStudents | filter:searchTerm"
+        (click)="deleteStudent(student)"
+      >
+        <ion-icon slot="start" name="person" size="small"></ion-icon>
+        <ion-label>
+          <b
+            >{{student.studentID}} {{ student.firstName }} {{ student.lastName
+            }}</b
+          >
+          <br />
+          <p style="font-size: 80%">Student ID: {{student.studentID}}</p>
+          <p style="font-size: 80%">Module 1: {{student.moduleNo1}}</p>
+          <p style="font-size: 80%">Module 2: {{student.moduleNo2}}</p>
+          <br />
+          <p style="font-size: 80%; color: #538df7; font-style: italic">
+            <ion-icon name="create" style="margin-right: 5px"></ion-icon>
+            Click to edit or delete
+          </p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </ng-container>
+  <!-- Add student button on bottom right -->
+  <ion-fab slot="fixed" horizontal="end" vertical="bottom">
+    <ion-fab-button size="small" (click)="addStudent()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
+
+<!-- <ion-item-group *ngFor="let module of newModules | filter:searchTerm">
+  <ion-item
+    button
+    (click)="navigateToModuleLocation(module.moduleName, module.long, module.lat, module.credits, module.room, module.location, module.moduleNo)"
+  >
+    <ion-thumbnail slot="start">
+      <img [src]="module.image" alt="{{module.moduleName}} image" />
+    </ion-thumbnail>
+    <ion-label>
+      <b>{{module.moduleName}}</b>
+      <br />
+      <p style="font-size: 80%">Module Number: {{module.moduleNo}}</p>
+      <p style="font-size: 80%">Credits: {{module.credits}}</p>
+      <br />
+      <p style="font-size: 80%; color: #538df7; font-style: italic">
+        <ion-icon name="location" style="margin-right: 5px"></ion-icon>
+        Click for location
+      </p>
+    </ion-label>
+  </ion-item>
+</ion-item-group> -->

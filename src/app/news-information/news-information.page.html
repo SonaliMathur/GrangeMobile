@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ article.title }}</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref=""></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="news-container">
+    <b><h1>{{ article.title }}</h1></b>
+    <h6>{{ article.description }}</h6>
+  </div>
+  <img src="{{ article.urlToImage }}" alt="{{ article.title }}" />
+  <div class="news-container news-author-date">
+    <h6>{{ article.author }}, {{ article.publishedAt | date: 'MMM d, y' }}</h6>
+    <hr style="border-top: 0.5px solid gray" />
+  </div>
+  <div class="news-container">
+    <p>
+      {{ article.content }}
+      <a href="{{ article.url }}" target="_blank">View full article</a>
+    </p>
+
+    <br />
+  </div>
+</ion-content>

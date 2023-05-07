@@ -1,0 +1,172 @@
+ion-menu {
+    max-width: 200px;
+  }
+  
+  /* Change the background color of the ion-menu element */
+  ion-menu {
+    --background: primary !important;
+  }
+
+  .logout-button {
+    text-align: center;
+    align-items: center;
+    padding-left: 0.5em;
+    padding-top: 2em;
+  }
+
+  ion-list {
+    font-size: 90%;
+  }
+
+
+
+ion-avatar {
+    border: 2px solid var(--ion-color-primary);
+    padding: 2px;
+}
+
+ion-card-title {
+  font-size: 97%;
+}
+
+
+.card-img-container {
+  position: relative;
+  height: 0;
+  padding-bottom: 50%; /* 3:2 aspect ratio */
+}
+
+.card-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+ion-card {
+  height: 288px;
+/* set a fixed height for the card */
+}
+
+ion-card-header {
+  padding-bottom: 0; 
+  margin-bottom: 10px; 
+}
+
+.readMoreBtn {
+  align-items: center;
+}
+
+hr {
+
+  margin-left: 1em;
+  margin-right: 1em;
+}
+
+h5 {
+  margin-left: 1em;
+  margin-right: 1em;
+  font-weight: bold;
+}
+
+.fact-card {
+  color: white;
+  height: 150px !important;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+}
+
+.fact-heading {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.fact-card ion-card-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+// .welcome-container img {
+//   height: 72vh;
+//   width: 100%;
+//   object-fit: cover;
+// }
+
+// .welcome-container {
+//   position: relative;
+// }
+
+// .text-container {
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   z-index: 1;
+// }
+
+// .welcome-text h2 {
+//   font-size: 2em;
+//   text-align: center;
+//   font-size: 4rem;
+//   color: white;
+// }
+
+// .translucent-rectangle {
+//   background-color: rgba(0, 0, 0, 0.5);
+//   border-radius: 10px;
+//   padding: 20px;
+//   display: inline-block;
+// }
+.welcome-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 72vh;
+  width: 100%;
+}
+
+.welcome-container img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.text-container {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+  max-width: 50%;
+}
+
+.welcome-text {
+  margin: 0;
+  text-shadow: 1px 1px #7798bf;
+  font-size: 1.4em; 
+  font-weight: normal;
+}
+
+// .welcome-text h1 {
+//   font-weight: 800;
+//   font-size: 1.6em;
+// }
+
+.welcome-text--primary {
+  font-size: 2rem; 
+  font-weight: bold;
+}

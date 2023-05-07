@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>College Event</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref=""></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list lines="full">
+    <ion-item>
+      <ion-input
+        required
+        type="text"
+        placeholder="Event Name"
+        [(ngModel)]="publicEvent.name"
+      >
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <!-- <ion-label>Description</ion-label> -->
+      <ion-textarea
+        rows="6"
+        placeholder="Enter description"
+        [(ngModel)]="publicEvent.description"
+      ></ion-textarea>
+    </ion-item>
+    <ion-item>
+      <ion-label>Date</ion-label>
+      <ion-datetime
+        displayFormat="DD MMM YYYY"
+        min="2022"
+        max="2030"
+        [(ngModel)]="publicEvent.date"
+      >
+      </ion-datetime>
+    </ion-item>
+  </ion-list>
+
+  <div class="image-upload ion-text-center">
+    <div class="ion-justify-content-center" (click)="addImage()" tappable>
+      <div class="image-container" *ngIf="!capturedImage && !updateImage">
+        <br />
+        <ion-icon class="image-icon" name="image" size="large"></ion-icon>
+      </div>
+      <br />
+      <img [src]="capturedImage" *ngIf="capturedImage && !updateImage" />
+      <img [src]="publicEvent.imageURL" *ngIf="updateImage" />
+      <br />
+    </div>
+  </div>
+  <hr style="border-top: 0.7px solid gray" />
+  <br />
+
+  <!-- <ion-button expand="full" (click)="saveEvent()"> Save Event </ion-button> -->
+
+  <ion-button
+    class="updateNoteBtn"
+    expand="block"
+    (click)="publicEvent.id ? updatePublicEvent() : addPublicEvent()"
+  >
+    <ion-icon
+      slot="start"
+      [name]="publicEvent.id ? 'create' : 'add'"
+    ></ion-icon>
+    {{ publicEvent.id ? 'Update Event' : 'Create Event' }}
+  </ion-button>
+</ion-content>

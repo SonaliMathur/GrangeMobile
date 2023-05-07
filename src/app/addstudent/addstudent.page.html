@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Add a Student</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button
+        defaultHref="tab2"
+        (click)="dismiss(false)"
+      ></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <!-- create a form to add student, using Lecture 8 example 3 -->
+  <ion-input
+    type="number"
+    [(ngModel)]="newStudent.studentID"
+    placeholder="Student ID"
+  ></ion-input>
+  <ion-input
+    type="text"
+    [(ngModel)]="newStudent.firstName"
+    placeholder="First Name"
+  ></ion-input>
+  <ion-input
+    type="text"
+    [(ngModel)]="newStudent.lastName"
+    placeholder="Last Name"
+  ></ion-input>
+  <ion-input
+    type="number"
+    [(ngModel)]="newStudent.moduleNo1"
+    placeholder="Module 1"
+  ></ion-input>
+  <ion-input
+    type="number"
+    [(ngModel)]="newStudent.moduleNo2"
+    placeholder="Module 2"
+  ></ion-input>
+  <ion-input
+    type="number"
+    [(ngModel)]="newStudent.courseID"
+    placeholder="Course ID"
+  ></ion-input>
+  <hr style="border-top: 0.7px solid gray" />
+  <br />
+  <ion-button (click)="addStudent()" expand="block">
+    <ion-icon slot="start" name="add"></ion-icon>
+    Add Student
+  </ion-button>
+</ion-content>

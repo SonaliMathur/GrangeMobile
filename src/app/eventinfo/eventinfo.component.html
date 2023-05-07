@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ name }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <img [src]="img" alt="Event Image" />
+    <ion-card-content>
+      <ion-card-title>{{ name }}</ion-card-title>
+      <p>{{ date | date : "dd/MM/yyyy" }}</p>
+      <p>{{ description }}</p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

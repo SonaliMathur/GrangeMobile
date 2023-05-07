@@ -1,0 +1,141 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Note</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tab5"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list lines="full">
+    <ion-item>
+      <ion-input
+        required
+        type="text"
+        placeholder="Task"
+        [(ngModel)]="todo.task"
+      >
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input
+        required
+        type="number"
+        placeholder="Priority"
+        [(ngModel)]="todo.priority"
+      >
+      </ion-input>
+    </ion-item>
+  </ion-list>
+  <!-- 
+  <ion-item>
+    <br />
+    <div class="image-upload ion-text-center">
+      <div class="ion-justify-content-center" (click)="addImage()" tappable>
+        <p class="upload-text" *ngIf="!capturedImage && !updateImage">
+          <ion-icon class="image-icon" name="image" size="large"></ion-icon>
+        </p>
+        <br />
+        <img [src]="capturedImage" *ngIf="capturedImage && !updateImage" />
+        <img [src]="todo.imageURL" *ngIf="updateImage" />
+        <br />
+      </div>
+    </div>
+  </ion-item> -->
+  <!-- 
+  <ion-item class="ion-align-items-center">
+    <div class="image-upload" (click)="addImage()" tappable>
+      <p class="upload-text" *ngIf="!capturedImage && !updateImage">
+        <ion-icon class="image-icon" name="image" size="large"></ion-icon>
+      </p>
+      <br />
+      <img [src]="capturedImage" *ngIf="capturedImage && !updateImage" />
+      <img [src]="todo.imageURL" *ngIf="updateImage" />
+      <br />
+      <br />
+    </div>
+    <br />
+  </ion-item> -->
+
+  <div class="image-upload ion-text-center">
+    <div class="ion-justify-content-center" (click)="addImage()" tappable>
+      <div class="image-container" *ngIf="!capturedImage && !updateImage">
+        <br />
+        <ion-icon class="image-icon" name="image" size="large"></ion-icon>
+      </div>
+      <br />
+      <img [src]="capturedImage" *ngIf="capturedImage && !updateImage" />
+      <img [src]="todo.imageURL" *ngIf="updateImage" />
+      <br />
+    </div>
+  </div>
+  <hr style="border-top: 0.7px solid gray" />
+  <br />
+  <ion-button
+    class="updateNoteBtn"
+    expand="block"
+    (click)="todo.id ? updateTodo() : addTodo()"
+  >
+    <ion-icon slot="start" [name]="todo.id ? 'create' : 'add'"></ion-icon>
+    {{ todo.id ? 'Update Note' : 'Create Note' }}
+  </ion-button>
+</ion-content>
+
+<!-- <ion-button expand="full" (click)="updateTodo()">Save</ion-button> -->
+<!-- <ion-item *ngIf="saved">
+    <ion-label color="success">Successfully saved!</ion-label>
+  </ion-item> -->
+
+<!-- <ion-button
+    class="updateNoteBtn"
+    expand="block"
+    (click)="todo.id ? updateTodo() : addTodo()"
+  >
+    {{ todo.id ? 'Update Note' : 'Create Note' }}
+  </ion-button> -->
+
+<!-- <ion-item>
+    <br />
+    <div
+      class="image-upload ion-justify-content-center"
+      (click)="addImage()"
+      tappable
+    >
+      <p class="upload-text" *ngIf="!capturedImage && !updateImage">
+        <ion-icon class="image-icon" name="image" size="large"> </ion-icon>
+      </p>
+      <br />
+      <img
+        class="imgUpload"
+        [src]="capturedImage"
+        *ngIf="capturedImage && !updateImage"
+        class="ion-justify-content-center"
+      />
+      <img
+        class="imgUpload2"
+        [src]="todo.imageURL"
+        *ngIf="updateImage"
+        class="ion-justify-content-center"
+      />
+      <br />
+    </div>
+  </ion-item> -->
+
+<!--   
+  <ion-item>
+    <br />
+    <div
+      class="image-upload ion-justify-content-center"
+      (click)="addImage()"
+      tappable
+    >
+      <p class="upload-text" *ngIf="!capturedImage && !updateImage">
+        <ion-icon class="image-icon" name="image" size="large"> </ion-icon>
+      </p>
+      <br />
+      <img [src]="capturedImage" *ngIf="capturedImage && !updateImage" />
+      <img [src]="todo.imageURL" *ngIf="updateImage" />
+      <br />
+    </div>
+  </ion-item> -->

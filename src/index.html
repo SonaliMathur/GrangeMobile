@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Ionic App</title>
+
+    <base href="/" />
+
+    <meta name="color-scheme" content="light dark" />
+    <meta
+      name="viewport"
+      content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+
+    <link rel="icon" type="image/png" href="assets/icon/favicon.png" />
+
+    <!-- add to homescreen for ios -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <script>
+      window.fbAsyncInit = function () {
+        FB.init({
+          appId: "787484426126148",
+          xfbml: true,
+          version: "v5.0",
+        });
+        FB.AppEvents.logPageView();
+      };
+
+      (function (d, s, id) {
+        var js,
+          fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {
+          return;
+        }
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "https://connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+      })(document, "script", "facebook-jssdk");
+
+      // window.fbAsyncInit = function () {
+      //   FB.init({
+      //     appId: "2165500297133777",
+      //     xfbml: true,
+      //     version: "v12.0",
+      //   });
+      //   FB.AppEvents.logPageView();
+      // };
+
+      // (function (d, s, id) {
+      //   var js,
+      //     fjs = d.getElementsByTagName(s)[0];
+      //   if (d.getElementById(id)) {
+      //     return;
+      //   }
+      //   js = d.createElement(s);
+      //   js.id = id;
+      //   js.src = "https://connect.facebook.net/en_US/sdk.js";
+      //   fjs.parentNode.insertBefore(js, fjs);
+      // })(document, "script", "facebook-jssdk");
+    </script>
+  </head>
+
+  <body>
+    <app-root></app-root>
+  </body>
+</html>

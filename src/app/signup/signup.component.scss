@@ -1,0 +1,31 @@
+ion-content {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    height: 100%;
+  }
+
+ion-button {
+    margin-left: 1em;
+    margin-right: 1em;
+  }
+
+  .logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .logo-img {
+    width: 7em; 
+    height: 7em; 
+    margin-top: 1em;
+  }
+
+  .login-link {
+    font-size: 85%;
+    margin-left: 0.5em;
+    align-items: center;
+    text-align: center;
+  }
+  

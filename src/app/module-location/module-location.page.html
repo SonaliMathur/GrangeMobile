@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{moduleName}}</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button
+        defaultHref="tab3"
+        (click)="dismiss(false)"
+      ></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-content [fullscreen]="true">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>{{moduleName}}</ion-card-title>
+        <hr style="border-top: 1px solid gray" />
+        <br />
+        <ion-card-subtitle>Module Number: {{moduleNo}}</ion-card-subtitle>
+        <ion-card-subtitle>Credits: {{credits}}</ion-card-subtitle>
+        <!-- <br /> -->
+        <hr style="border-top: 1px solid rgb(65, 65, 65)" />
+        <!-- <h5><b>LOCATION</b></h5> -->
+        <ion-card-subtitle>Campus: {{location}}</ion-card-subtitle>
+        <ion-card-subtitle>Room: {{room}}</ion-card-subtitle>
+        <!-- <hr style="border-top: 1px solid gray" /> -->
+      </ion-card-header>
+
+      <!-- <ion-card-content> </ion-card-content> -->
+    </ion-card>
+    <div id="map"></div>
+  </ion-content>
+</ion-content>
+
+<!-- <h2><b>{{moduleName}}</b></h2>
+    <p>Module Number: {{moduleNo}}</p>
+    <p>Credits: {{credits}}</p>
+    <p>Location: {{location}}</p>
+    <p>Room:{{location}}</p>
+    <p>Longitude: {{long}}</p>
+    <p>Latitude: {{lat}}</p> -->

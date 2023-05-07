@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Facebook Page</ion-title>
+  </ion-toolbar>
+</ion-header>
+<br />
+<ion-content class="ion-padding">
+  <h3 *ngIf="name" class="ion-text-center ion-padding-top">
+    Login as <br />
+    <span class="name">{{ name }}</span>?
+  </h3>
+  <div class="ion-text-center ion-padding">
+    <p>Facebook login has access to your name and email.</p>
+  </div>
+  <div class="ion-text-center ion-padding-top">
+    <ion-button color="primary" size="default" (click)="continue()"
+      >Continue</ion-button
+    >
+  </div>
+
+  <div class="ion-text-center ion-padding-top">
+    <p>Changed your mind?</p>
+    <a
+      routerLink="/login"
+      routerDirection="back"
+      class="ion-text-decoration-none"
+    >
+      <ion-icon name="arrow-back"></ion-icon> Go Back
+    </a>
+  </div>
+</ion-content>

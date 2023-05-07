@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title> Sign Up </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="signupForm" (ngSubmit)="signup()">
+    <div class="logo-container">
+      <img src="assets/logo.png" alt="Logo" class="logo-img" />
+    </div>
+    <ion-item mode="md">
+      <ion-label position="floating">Email</ion-label>
+      <ion-input type="email" formControlName="email"></ion-input>
+      <ion-note
+        slot="error"
+        *ngIf="
+          (signupForm.get('email').dirty || signupForm.get('email').touched) &&
+          signupForm.get('email').errors
+        "
+        >Email is invalid</ion-note
+      >
+    </ion-item>
+
+    <ion-item mode="md">
+      <ion-label position="floating">Password</ion-label>
+      <ion-input type="password" formControlName="password"></ion-input>
+    </ion-item>
+    <br />
+    <ion-button expand="block" type="submit" [disabled]="signupForm.invalid"
+      >Create Account</ion-button
+    >
+  </form>
+  <br />
+  <div class="login-link">
+    Already have an account?
+    <a class="login" routerLink="/login" (click)="goToLogin()">Log In</a>
+  </div>
+</ion-content>

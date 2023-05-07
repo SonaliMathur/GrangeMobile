@@ -1,0 +1,354 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Notes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" style="height: 100%">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">My Notes</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-segment
+    [(ngModel)]="selectedSegment"
+    mode="md"
+    style="font-family: 'Helvetica Neue'"
+  >
+    <ion-segment-button value="tasks">
+      <ion-label>Tasks</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="events">
+      <ion-label>Events</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <ion-list *ngIf="selectedSegment === 'tasks'">
+    <ng-container *ngIf="!todos || todos.length === 0">
+      <div *ngFor="let n of [0,1,2]" padding>
+        <ion-skeleton-text></ion-skeleton-text>
+        <p>
+          <ion-skeleton-text class="fake-skeleton"></ion-skeleton-text>
+        </p>
+      </div>
+    </ng-container>
+
+    <ion-item-sliding *ngFor="let todo of (todos | async)">
+      <ion-item lines="inset" [routerLink]="['/details', todo.id]">
+        <ion-avatar slot="start">
+          <img
+            src="{{ todo?.imageURL || 'https://ionicframework.com/docs/img/demos/card-media.png' }}"
+          />
+        </ion-avatar>
+        <ion-label>
+          {{ todo.task }}
+          <p>{{ todo.createdAt | date: 'short' }}</p>
+        </ion-label>
+        <ion-note slot="end" color="primary">{{ todo.priority }}</ion-note>
+      </ion-item>
+
+      <ion-item-options side="end">
+        <ion-item-option (click)="remove(todo)" color="danger">
+          <ion-icon slot="icon-only" name="trash" size="small"></ion-icon>
+          Delete
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+  <ion-list *ngIf="selectedSegment === 'events'">
+    <br />
+    <ion-button
+      class="createEventBtn"
+      fill="outline"
+      size="small"
+      routerLink="/eventdetails"
+      routerDirection="forward"
+      end
+    >
+      + Create an event
+    </ion-button>
+    <br />
+    <br />
+    <ion-card
+      *ngFor="let event of events"
+      class="event-card"
+      [ngClass]="{ 'event-past': isEventPast(event.date) }"
+    >
+      <img
+        src="{{ event?.imageURL || 'https://ionicframework.com/docs/img/demos/card-media.png' }}"
+      />
+      <ion-card-header>
+        <ion-card-title
+          >{{ event.name | slice:0:20 }}{{ event.name.length > 20 ? '...' : ''
+          }}</ion-card-title
+        >
+        <ion-card-subtitle
+          >{{ event.date | date: 'dd/MM/yyyy' }}</ion-card-subtitle
+        >
+      </ion-card-header>
+      <ion-card-content>
+        <p style="font-size: 80%">
+          {{ event.description | slice:0:80 }}{{ event.description.length > 80 ?
+          '...' : '' }}
+        </p>
+      </ion-card-content>
+      <ion-row class="button-row">
+        <ion-col>
+          <ion-button
+            fill="clear"
+            size="small"
+            [routerLink]="['/eventdetails', event.id]"
+            routerDirection="forward"
+          >
+            Edit
+            <ion-icon slot="icon-only" name="create" size="small"></ion-icon>
+          </ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button
+            fill="clear"
+            color="danger"
+            (click)="removeTheEvent(event)"
+            size="small"
+          >
+            Delete
+            <ion-icon slot="icon-only" name="trash" size="small"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+  </ion-list>
+
+  <ng-container *ngIf="selectedSegment === 'tasks'">
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button
+        size="small"
+        routerLink="/details"
+        routerDirection="forward"
+      >
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+  </ng-container>
+</ion-content>
+
+<!-- <ion-list *ngIf="selectedSegment === 'events'">
+    <ion-button
+      class="createEventBtn"
+      fill="outline"
+      size="small"
+      routerLink="/eventdetails"
+      routerDirection="forward"
+      end
+    >
+      Create an event
+    </ion-button>
+    <br />
+    <br /> -->
+<!-- <ion-item *ngFor="let item of events">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>{{ item.name }}</ion-card-title>
+          <ion-card-subtitle
+            >{{ item.date | date: 'dd/MM/yyyy' }}</ion-card-subtitle
+          >
+        </ion-card-header>
+        <ion-card-content>
+          <p>{{ item.description }}</p>
+        </ion-card-content>
+        <ion-row>
+          <ion-col>
+            <ion-button
+              fill="clear"
+              [routerLink]="['/eventdetails', item.id]"
+              routerDirection="forward"
+              >Edit
+              <ion-icon slot="icon-only" name="create" size="small"></ion-icon>
+            </ion-button>
+          </ion-col>
+          <ion-col>
+            <ion-button
+              fill="clear"
+              color="danger"
+              (click)="removeTheEvent(item)"
+              >Delete
+              <ion-icon slot="icon-only" name="trash" size="small"></ion-icon>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-card>
+    </ion-item>
+  </ion-list> -->
+
+<!-- <ion-list *ngIf="selectedSegment === 'events'">
+    <ion-button
+      class="createEventBtn"
+      fill="outline"
+      size="small"
+      routerLink="/eventdetails"
+      routerDirection="forward"
+      end
+    >
+      Create an event
+    </ion-button>
+    <br />
+    <br />
+    <ion-list>
+      <ion-item-sliding *ngFor="let item of events">
+        <ion-item lines="inset" [routerLink]="['/eventdetails', item.id]">
+          <ion-label>
+            <h2>{{ item.name }}</h2>
+            <p><em>{{ item.description }}</em></p>
+            <p class="dateText">{{ item.date | date: 'dd/MM/yyyy' }}</p>
+          </ion-label>
+        </ion-item> -->
+
+<!-- <ion-item-options side="end">
+          <ion-item-option color="danger" (click)="removeTheEvent(item)">
+            Delete
+          </ion-item-option>
+        </ion-item-options>
+      </ion-item>
+    </ion-list>
+  </ion-list> -->
+
+<!-- <ion-item-sliding *ngFor="let item of events">
+      <ion-item lines="inset" [routerLink]="['/eventdetails', item.id]">
+        <ion-label> {{ item.name }} </ion-label>
+        <br />
+        <p>{{ item.description }}</p>
+        <br />
+        <p>{{ item.date }}</p>
+      </ion-item>
+
+      <ion-item-options side="end">
+        <ion-item-option (click)="removeTheEvent(item)" color="danger">
+          Delete
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list> -->
+
+<!-- 
+<ion-label>Date</ion-label>
+<ion-datetime
+  displayFormat="DD / MMM / YYYY"
+  min="2021"
+  max="2028"
+></ion-datetime> -->
+
+<!-- Compleet -->
+<!-- <ion-list *ngIf="selectedSegment === 'completed'">
+    <ng-container *ngIf="!completedTodos || completedTodos.length === 0">
+      <div *ngFor="let n of [0,1,2]" padding>
+        <ion-skeleton-text></ion-skeleton-text>
+        <p>
+          <ion-skeleton-text class="fake-skeleton"></ion-skeleton-text>
+        </p>
+      </div>
+    </ng-container>
+    <ion-item-sliding *ngFor="let completedTodo of completedTodos">
+      <ion-item lines="inset">
+        <ion-label>{{ completedTodo.task }}</ion-label>
+      </ion-item>
+    </ion-item-sliding>
+  </ion-list> -->
+
+<!-- <ion-item-sliding *ngFor="let todo of (completedTodos | async)">
+      <ion-item lines="inset" [routerLink]="['/details', todo.id]">
+        <ion-checkbox slot="start" checked disabled></ion-checkbox>
+        <ion-label> {{ todo.task }} </ion-label>
+      </ion-item>
+
+      <ion-item-options side="end">
+        <ion-item-option (click)="remove(todo)" color="danger"
+          >Delete</ion-item-option
+        >
+      </ion-item-options>
+    </ion-item-sliding> -->
+
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title slot="start">Notes</ion-title>
+    <ion-buttons slot="end">
+      <ion-button id="present-alert" (click)="presentAlert()">
+        <ion-alert
+          trigger="present-alert"
+          header="Alert!"
+          [buttons]="alertButtons"
+          (didDismiss)="setResult($event)"
+        ></ion-alert>
+        <ion-icon slot="end" name="log-out-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">My Notes</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-list>
+    <ng-container *ngIf="!todos || todos.length === 0">
+      <div *ngFor="let n of [0,1,2]" padding>
+        <ion-skeleton-text></ion-skeleton-text>
+        <p>
+          <ion-skeleton-text class="fake-skeleton"></ion-skeleton-text>
+        </p>
+      </div>
+    </ng-container>
+
+    <ion-item-sliding *ngFor="let todo of (todos | async)">
+      <ion-item lines="inset" button [routerLink]="['/details', todo.id]">
+        <ion-label>
+          {{ todo.task }}
+          <p>{{ todo.createdAt | date: 'short' }}</p>
+        </ion-label>
+        <ion-note slot="end" color="primary"> {{ todo.priority }} </ion-note>
+      </ion-item>
+
+      <ion-item-options side="end">
+        <ion-item-option (click)="remove(todo)" color="secondary"
+          >Check
+          <ion-icon name="checkmark" slot="end"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button
+      size="small"
+      routerLink="/details"
+      routerDirection="forward"
+    >
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
+ -->
+
+<!-- <ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Notes</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title slot="start">Notes</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="presentAlert()">
+        <ion-icon slot="icon-only" name="log-out-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header> -->

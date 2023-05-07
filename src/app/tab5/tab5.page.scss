@@ -1,0 +1,39 @@
+.fake-skeleton {
+    width: 60%;
+}
+
+ion-fab-button {
+    --border-radius: 15px;
+    --box-shadow: 0px 1px 2px 0px rgba(0,0,0,.3), 0px 1px 3px 1px rgba(0,0,0,.15);
+    --color: rgb(255, 255, 255);
+  }
+
+  ion-checkbox {
+    --size: 20px;
+    --checkbox-background-checked: primary;
+  }
+  
+  ion-checkbox::part(container) {
+    border-radius: 6px;
+    border: 2px solid primary;
+  }
+
+  ion-datetime {
+    display: block !important;
+  }
+
+  .createEventBtn {
+    float: right;
+    margin-right: 0.5em;
+    margin-top: 0.5em;
+  }
+
+  .event-past {
+    opacity: 0.6;
+  }
+
+  .event-card img {
+    height: 120px;
+    width: 100%;
+    object-fit: cover;
+  }

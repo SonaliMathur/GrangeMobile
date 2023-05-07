@@ -1,0 +1,138 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Home</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-toolbar>
+    <ion-segment
+      [(ngModel)]="segment"
+      #segmentcontrol
+      mode="md"
+      style="font-family: 'Helvetica Neue'"
+    >
+      <ion-segment-button value="home">
+        <ion-label>Home</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="tweets">
+        <ion-label>Ionic Tweets</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+
+  <div *ngIf="segment == 'home'">
+    <div class="welcome-container">
+      <img src="assets/tudRender.jpeg" alt="tudImage" />
+      <div class="text-container">
+        <h2 class="welcome-text">Welcome to</h2>
+        <b><h1 class="welcome-text welcome-text--primary">GrangeMobile</h1></b>
+      </div>
+    </div>
+
+    <!-- The Articles Api -->
+    <b><h5>Top TUD Articles</h5></b>
+    <hr style="border-top: 0.5px solid gray" />
+    <ion-slides [options]="slideOpts">
+      <ion-slide *ngFor="let article of articles">
+        <ion-card>
+          <div class="card-img-container">
+            <img
+              [src]="article.urlToImage"
+              alt="{{ article.title }}"
+              class="card-img"
+            />
+          </div>
+          <ion-card-header>
+            <ion-card-subtitle
+              >{{ article.publishedAt | date: 'MMM d, y' }}</ion-card-subtitle
+            >
+            <ion-card-title
+              >{{ article.title | slice:0:53 }}{{ article.title.length > 53 ?
+              '...' : '' }}</ion-card-title
+            >
+          </ion-card-header>
+          <ion-card-content>
+            <p>
+              {{ article.author | slice:0:17 }}{{ article.author.length > 17 ?
+              '...' : '' }}
+            </p>
+            <ion-button
+              class="readMoreBtn"
+              fill="solid"
+              size="small"
+              (click)="readMore(article)"
+            >
+              Read more
+              <ion-icon name="arrow-forward"></ion-icon>
+            </ion-button>
+          </ion-card-content>
+        </ion-card>
+      </ion-slide>
+    </ion-slides>
+
+    <!-- Facts and Figures (Hard coded)-->
+    <b><h5>Facts & Figures</h5></b>
+    <hr style="border-top: 0.5px solid gray" />
+    <ion-slides [options]="slideOpts">
+      <ion-slide>
+        <ion-card class="fact-card" style="background-color: #0b818c">
+          <ion-card-content>
+            <b><h2 class="fact-heading">30,000</h2></b>
+            <p>Students</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-slide>
+      <ion-slide>
+        <ion-card class="fact-card" style="background-color: #053c70">
+          <ion-card-content>
+            <b><h2 class="fact-heading">3500</h2></b>
+            <p>Staff Members</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-slide>
+      <ion-slide>
+        <ion-card class="fact-card" style="background-color: #e15417">
+          <ion-card-content>
+            <b><h2 class="fact-heading">140</h2></b>
+            <p>Nationalities</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-slide>
+
+      <ion-slide>
+        <ion-card class="fact-card" style="background-color: #6f3ab4">
+          <ion-card-content>
+            <b><h2 class="fact-heading">5</h2></b>
+            <p>Locations in Dublin</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-slide>
+
+      <ion-slide>
+        <ion-card class="fact-card" style="background-color: #900c19">
+          <ion-card-content>
+            <b><h2 class="fact-heading">400+</h2></b>
+            <p>Sustainable Businesses</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-slide>
+    </ion-slides>
+  </div>
+
+  <div *ngIf="segment == 'tweets'">
+    <br />
+    <ion-slides [options]="opts">
+      <ion-slide *ngFor="let tweet of tweets" [tweet]="tweet">
+        <ion-avatar>
+          <img [src]="tweet.img" />
+        </ion-avatar>
+      </ion-slide>
+    </ion-slides>
+    <hr style="border-top: 0.2px solid gray" />
+    <app-tweet *ngFor="let tweet of tweets" [tweet]="tweet"></app-tweet>
+  </div>
+</ion-content>

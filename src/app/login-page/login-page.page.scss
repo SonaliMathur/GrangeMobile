@@ -1,0 +1,56 @@
+ion-content {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  height: 100%;
+}
+
+.signup-container, .social-container {
+  font-size: 85%;
+  margin-left: 0.5em;
+  align-items: center;
+  text-align: center;
+}
+
+hr {
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+  align-items: center;
+  text-align: center;
+
+}
+
+ion-button {
+  margin-left: 1em;
+  margin-right: 1em;
+}
+
+.social-container {
+  align-items: center;
+  text-align: center;
+}
+
+.social-button {
+  font-size: 80%;
+}
+
+.translucent-text {
+  opacity: 0.8;
+}
+
+.form-item {
+  margin-bottom: 16px;
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo-img {
+  width: 7em; 
+  height: 7em; 
+  margin-top: 1em;
+}
+

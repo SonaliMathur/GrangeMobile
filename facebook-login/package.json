@@ -1,0 +1,98 @@
+{
+  "_from": "@capacitor-community/facebook-login",
+  "_id": "@capacitor-community/facebook-login@2.0.0",
+  "_inBundle": false,
+  "_integrity": "sha512-C/RxXAbhxGB+OQS+x543wwgP7/ItODAnvvOdAcNaHnYmd+OvaHa8WzyNoqDQ3jct2IOqdGMRtb+eVfXA1CeUhw==",
+  "_location": "/@capacitor-community/facebook-login",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "@capacitor-community/facebook-login",
+    "name": "@capacitor-community/facebook-login",
+    "escapedName": "@capacitor-community%2ffacebook-login",
+    "scope": "@capacitor-community",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/@capacitor-community/facebook-login/-/facebook-login-2.0.0.tgz",
+  "_shasum": "5dd534db74cfe7bc29ceb9121be252cc0c7e287b",
+  "_spec": "@capacitor-community/facebook-login",
+  "_where": "/Users/keith/Google Drive/MSc in CDM/CDM Modules/Social Media Applications/2020-2021/Lectures/Lecture 11/Examples/Lecture11_example2",
+  "author": {
+    "name": "Masahiko Sakakibara",
+    "email": "sakakibara@rdlabo.jp"
+  },
+  "bundleDependencies": false,
+  "capacitor": {
+    "ios": {
+      "src": "ios"
+    },
+    "android": {
+      "src": "android"
+    }
+  },
+  "dependencies": {
+    "@capacitor/core": "^2.0.0"
+  },
+  "deprecated": false,
+  "description": "A native plugin for Facebook Login",
+  "devDependencies": {
+    "@capacitor/android": "^2.0.0",
+    "@capacitor/ios": "^2.0.0",
+    "@ionic/prettier-config": "^1.0.0",
+    "@ionic/swiftlint-config": "^1.0.2",
+    "husky": "^4.2.5",
+    "np": "^6.2.4",
+    "prettier": "^2.0.5",
+    "prettier-plugin-java": "^0.8.0",
+    "pretty-quick": "^2.0.1",
+    "rimraf": "^3.0.0",
+    "swiftlint": "^1.0.1",
+    "typescript": "^3.2.4"
+  },
+  "files": [
+    "dist/",
+    "ios/",
+    "android/",
+    "CapacitorCommunityFacebookLogin.podspec"
+  ],
+  "homepage": "https://github.com/capacitor-community/facebook-login#readme",
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint"
+    }
+  },
+  "keywords": [
+    "capacitor",
+    "plugin",
+    "native"
+  ],
+  "license": "MIT",
+  "main": "dist/esm/index.js",
+  "name": "@capacitor-community/facebook-login",
+  "prettier": "@ionic/prettier-config",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/capacitor-community/facebook-login.git"
+  },
+  "scripts": {
+    "build": "npm run clean && tsc",
+    "clean": "rimraf ./dist",
+    "fmt": "npm run prettier -- --write && npm run swiftlint -- autocorrect",
+    "lint": "npm run prettier -- --check",
+    "prepublishOnly": "npm run build",
+    "prettier": "prettier \"{android/src,src}/**/*.{css,html,java,js,ts}\"",
+    "release": "np",
+    "swiftlint": "swiftlint",
+    "watch": "tsc --watch"
+  },
+  "swiftlint": "@ionic/swiftlint-config",
+  "types": "dist/esm/index.d.ts",
+  "version": "2.0.0"
+}

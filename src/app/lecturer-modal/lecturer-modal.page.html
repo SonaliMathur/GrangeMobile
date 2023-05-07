@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Lecturers</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-list-header> </ion-list-header>
+    <ion-item-group *ngFor="let lecturer of newLecturers">
+      <ion-item (click)="openEmailModal(lecturer)">
+        <ion-label>
+          <b> {{ lecturer.firstName }} {{ lecturer.lastName }} </b>
+          <br />
+          <p style="font-size: 80%">Staff Number: {{ lecturer.staffNumber }}</p>
+          <p style="font-size: 80%; font-style: italic">Click to email</p>
+          <p style="font-size: 80%; font-style: italic">{{ lecturer.email }}</p>
+        </ion-label>
+        <ion-buttons slot="end">
+          <ion-button fill="clear">
+            <ion-icon slot="icon-only" name="mail"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-item>
+    </ion-item-group>
+  </ion-list>
+</ion-content>
